@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 app.use('/blogs', blogRouter);
 
 // Run Server
-const PORT = 4000;
-app.listen(PORT, () => {
-	console.log(`Server is learning on http://localhost:${PORT}`);
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+	console.log(`Server is learning on http://localhost:${port}`);
 });
