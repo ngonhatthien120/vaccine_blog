@@ -50,13 +50,15 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', upload.single('image'), async (req, res) => {
 	req.blog = await Blog.findById(req.params.id);
 	let blog = req.blog;
 
 	blog.vaccine = req.body.vaccine;
 	blog.user = req.body.user;
 	blog.hospital = req.body.hospital;
+	blog.feeling = req.body.feeling;
+	blog.img = req.file.filename;
 
 	try {
 		blog = await blog.save();
